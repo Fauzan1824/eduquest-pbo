@@ -1,6 +1,6 @@
 {
   "name": "gamifikasi-pembelajaran",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,13 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.12.0",
+    "@supabase/supabase-js": "^2.108.2",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.383.0",
     "next": "14.2.3",
     "react": "^18",
-    "react-dom": "^18",
-    "@supabase/supabase-js": "^2.56.0",
-    "@supabase/ssr": "^0.7.0",
-    "lucide-react": "^0.383.0",
-    "clsx": "^2.1.1"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@types/node": "^20",
