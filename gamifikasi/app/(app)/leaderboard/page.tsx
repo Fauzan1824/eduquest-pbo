@@ -26,76 +26,23 @@ export default async function LeaderboardPage() {
       {/* Top 3 */}
       {leaderboard && leaderboard.length >= 3 && (
         <div className="flex items-end justify-center gap-4 mb-8">
-          {[
-            {
-              player: leaderboard[1], // Juara 2 (kiri)
-              rank: 2,
-              height: 'h-32',
-              colorIndex: 1,
-            },
-            {
-              player: leaderboard[0], // Juara 1 (tengah)
-              rank: 1,
-              height: 'h-44',
-              colorIndex: 0,
-            },
-            {
-              player: leaderboard[2], // Juara 3 (kanan)
-              rank: 3,
-              height: 'h-24',
-              colorIndex: 2,
-            },
-          ].map((item) => {
-            const p = item.player;
+          {[1, 0, 2].map((i) => {
+            const p = leaderboard[i];
             if (!p) return null;
-
+            const rank = i + 1;
+            const heights = ['h-28', 'h-36', 'h-24'];
             return (
               <div key={p.id} className="flex flex-col items-center gap-2">
-                {/* Avatar */}
-                <div
-                  className={clsx(
-                    'w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold border-2',
-                    rankBg[item.colorIndex],
-                    rankColors[item.colorIndex]
-                  )}
-                >
+                <div className={clsx('w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold border-2', rankBg[i], rankColors[i])}>
                   {(p.display_name ?? 'U').charAt(0).toUpperCase()}
                 </div>
-
-                {/* Info */}
                 <div className="text-xs text-center">
-                  <div
-                    className={clsx(
-                      'font-bold text-sm',
-                      rankColors[item.colorIndex]
-                    )}
-                  >
-                    #{item.rank}
-                  </div>
-
-                  <div className="text-slate-300 text-xs truncate max-w-[80px]">
-                    {p.display_name ?? 'User'}
-                  </div>
-
-                  <div className="text-slate-500 text-xs">
-                    {p.xp} XP
-                  </div>
+                  <div className={clsx('font-bold', rankColors[i])}>#{rank}</div>
+                  <div className="text-slate-300 text-xs truncate max-w-[80px]">{p.display_name ?? 'User'}</div>
+                  <div className="text-slate-500 text-xs">{p.xp} XP</div>
                 </div>
-
-                {/* Podium */}
-                <div
-                  className={clsx(
-                    'w-20 rounded-t-xl flex items-center justify-center border',
-                    item.height,
-                    rankBg[item.colorIndex]
-                  )}
-                >
-                  <Medal
-                    className={clsx(
-                      'w-6 h-6',
-                      rankColors[item.colorIndex]
-                    )}
-                  />
+                <div className={clsx('w-20 rounded-t-xl flex items-center justify-center', heights[i], rankBg[i])}>
+                  <Medal className={clsx('w-6 h-6', rankColors[i])} />
                 </div>
               </div>
             );
