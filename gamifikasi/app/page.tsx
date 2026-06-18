@@ -58,7 +58,7 @@ export default function HomePage() {
       </section>
 
       <footer className="border-t border-slate-800 py-6 text-center text-slate-500 text-sm">
-        © 2024 EduQuest · Kelompok WartegDepanMSU · Tugas Besar PBO
+        © 2026 EduQuest · Kelompok WartegDepanMSU · Tugas Besar PBO
       </footer>
     </main>
   );
